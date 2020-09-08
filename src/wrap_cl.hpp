@@ -841,11 +841,16 @@ namespace pyopencl
 #ifdef CL_DEVICE_PROFILING_TIMER_OFFSET_AMD
           case CL_DEVICE_PROFILING_TIMER_OFFSET_AMD: DEV_GET_INT_INF(cl_ulong);
 #endif
-/* FIXME
+	    /* FIXME */
 #ifdef CL_DEVICE_TOPOLOGY_AMD
           case CL_DEVICE_TOPOLOGY_AMD:
+            {
+              std::vector<cl_char> result;
+              PYOPENCL_GET_VEC_INFO(Device, m_device, param_name, result);
+              PYOPENCL_RETURN_VECTOR(cl_char, result);
+            }
 #endif
-*/
+	    /* FIXME */
 #ifdef CL_DEVICE_BOARD_NAME_AMD
           case CL_DEVICE_BOARD_NAME_AMD: ;
             PYOPENCL_GET_STR_INFO(Device, m_device, param_name);
